@@ -1,9 +1,202 @@
-html, body {
+*{
     margin: 0;
     padding: 0;
+    color: white;
+    text-align: center;
+    font-family: 'Press Start 2P', cursive; 
+    line-height: 1.5rem;
+    list-style-type: none;
+}
+h1, h4, p{
+   padding: 20px; 
+}
+body{    
+    background-color: #0D1117;
+}
+a{
+    padding: 5px;
+}
+#title a{
+    text-decoration: none;
 }
 
-canvas {
-display: block;
+.links li{
+    padding: 5px;
 }
+.links a:hover{
+    background-color: #7E8590;
+    color: #0D1117;
+    text-decoration: none;
+}
+
+.design{
+    margin: 20px 0px;
+}
+.flex-center{
+    display: flex;
+    justify-content: center;
+}
+.column{
+    flex-direction: column;
+}
+div.container {
+    display: inline-block;
+    padding: 0 20px 0px 20px;
+    width: 100%;
+    max-width: 800px;
+    height: fit-content;
+}
+#social-div-mobile{
+    display: none;
+}
+
+#social-div-pc ul{
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+.menuBtn:hover{
+    filter: invert(56%) sepia(16%) saturate(237%) hue-rotate(177deg) brightness(89%) contrast(89%);
+}
+.menuBtn a{
+    display: inline-flex;
+    padding: 2px;
+}
+.menuBtn img{
+    width: 52px;
+}
+
+#social-div-pc p{
+    display: none;
+}
+
+#translatorPTpc,
+#translatorENpc,
+#translatorPTmob,
+#translatorENmob{
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 2px;
+    display: inline-flex;
+}
+
+#hamburguer_menu{
+    display: none;
+}
+#hamburguer_menu img{
+    width: 25px;
+    filter: invert(100%) sepia(1%) saturate(7500%) hue-rotate(237deg) brightness(105%) contrast(101%);
+}
+
+#game_list{
+    background-color: #161B22;
+    margin-bottom: 18px;
+}
+
+
+#infos{
+    background-color: #161B22;
+    margin: 20px 0px;
+}
+.btn{
+    background-color: transparent;
+    border: none;
+    width: 100%;
+    height: 50px;
+    text-align: center;
+    display: block;
+    font-size: 1.5em;
+    cursor: pointer;
+}
+
+.btn:hover{
+    background-color: #30363D;
+}
+
+.box-info{
+    padding: 10px;
+    font-size: 14px;
+    box-sizing: border-box;
+    width: 100%;
+    background-color: #0D1117;
+    border: 1px solid #30363D;
+    display: none;
+}
+
+
+.box-info span{
+    background-color: #30363D;
+    padding: 8px;
+}
+
+#gameDiv canvas {
+    background-color: black;
+    width: 100%;
+}
+
+
+.menuBtn:hover{
+    filter: invert(56%) sepia(16%) saturate(237%) hue-rotate(177deg) brightness(89%) contrast(89%);
+}
+
+@media only screen and (max-width: 800px) {
+    *{
+        font-size: 14px;
+    }
+    h1,h2,h3,h4{
+        font-size: 18px;
+    }
+    div.container {
+        padding: 0;
+    }
+    #social-div-pc{
+        display: none;
+    }
+    #social-div-mobile{
+        justify-content: flex-start;
+        background-color: #2e353fd1;
+        height: 100%;
+        width: 100%;
+        position: absolute;
+    }
+    #divMobile{
+        background-color: #0D1117;
+        height: 100%;
+        width: 200px;
+    }
+    #social-div-mobile li{
+        text-align: left;
+        padding: 4px;
+    }
+    #social-div-mobile form{
+        text-align: left;
+    }
+    #social-div-mobile a,
+    #social-div-mobile button{
+        text-decoration: none;
+        align-items: center;
+        width: 100%;
+    }
+    .menuBtn img{
+        width: 30px;
+    }
+    #social-div-mobile p{
+        display: inline-block;
+        margin-left: 10px;
+        padding: 0;
+    }
+    #hamburguer_menu{
+        position: absolute;
+        top: 30px;
+        left: 20px;
+        display: block;
+    }
+    
+    .menuBtn:hover{
+        filter: invert(56%) sepia(16%) saturate(237%) hue-rotate(177deg) brightness(89%) contrast(89%);
+    }
+    
+
+  }
 
