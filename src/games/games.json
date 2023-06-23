@@ -1,0 +1,15 @@
+{
+    "games":[
+        {"name":"Ping-Pong"},
+        {"name":"Snake"},
+        {"name":"Tetris"},
+        {"name":"Space Invaders"},
+        {"name":"Frogger"},
+        {"name":"Shooting disappearing"},
+        {"name":"Bomberman"},
+        {"name":"Doodle Jump"},
+        {"name":"Puzzle Bobble"},
+        {"name":"Helicopter"},
+        {"name":"Block dude"}
+    ]
+}
