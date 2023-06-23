@@ -70,17 +70,6 @@ div.container {
     display: none;
 }
 
-#translatorPTpc,
-#translatorENpc,
-#translatorPTmob,
-#translatorENmob{
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
-    padding: 2px;
-    display: inline-flex;
-}
-
 #hamburguer_menu{
     display: none;
 }
@@ -92,6 +81,12 @@ div.container {
 #game_list{
     background-color: #161B22;
     margin-bottom: 18px;
+}
+
+
+
+#gameDiv canvas{
+    position: relative;
 }
 
 

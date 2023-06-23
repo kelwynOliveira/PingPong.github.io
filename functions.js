@@ -4,8 +4,6 @@ let btnPTmob = document.querySelector('#translatorPTmob');
 let btnENmob = document.querySelector('#translatorENmob');
 socialDiv = document.querySelector('#social-div-mobile');
 
-
-
 function showHide(el){
     display = document.querySelector(el);
     display.style.display === 'block'? display.style.display = 'none' : display.style.display = 'block';
