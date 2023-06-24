@@ -158,12 +158,12 @@ function racketRightMovement(keyUp, keyDown){
     }, false);
 
 
-    controlsRight.querySelector("#up").addEventListener('touchstart', () => {
+    controlsRight.querySelector("#up").addEventListener('click', () => {
         if(yRacketRight > 0) {
             yRacketRight -= 1/100;
         }
     }, false);
-    controlsRight.querySelector("#down").addEventListener('touchstart', () => {
+    controlsRight.querySelector("#down").addEventListener('click', () => {
         if(yRacketRight < (tableHight-racketHight)) {
             yRacketRight += 1/100;
         }
@@ -180,12 +180,12 @@ function racketLeftMovement(keyUp, keyDown){
         }
       }, false);
 
-      controlsLeft.querySelector("#up").addEventListener('touchstart', () => {
+      controlsLeft.querySelector("#up").addEventListener('click', () => {
         if(yRacketLeft > 0) {
             yRacketLeft -= 1/100;
         }
       }, false);
-      controlsLeft.querySelector("#down").addEventListener('touchstart', () => {
+      controlsLeft.querySelector("#down").addEventListener('click', () => {
         if(yRacketLeft < (tableHight-racketHight)) {
             yRacketLeft += 1/100;
         }
