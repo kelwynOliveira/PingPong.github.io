@@ -2,6 +2,9 @@ const canvasPlace = document.querySelector('#gameDiv').querySelector('canvas');
 const ctx = canvasPlace.getContext("2d");
 const scoreLeftPlayer = document.querySelector("#leftPlayer");
 const scoreRightPlayer = document.querySelector("#rightPlayer");
+const controls = document.querySelector("#controls");
+const controlsLeft = controls.querySelector("#controlsLeft");
+const controlsRight = controls.querySelector("#controlsRight");
 
 //canvas dimmension
 let tableWidth = canvasPlace.width;
@@ -37,6 +40,7 @@ let colorFill = "#fff";
 let colisionPoint = racketWidth+xRacketLeft;
 let scoreLeft = 0;
 let scoreRight = 0;
+let touchup = false;
 
 function firstScreen(){
     xBall = tableWidth/2;
@@ -53,6 +57,8 @@ let startDraw = null;
 function startGame(){
     if (btnStart.textContent === "Start the game"){
         btnStart.textContent = "Stop the game";
+        if(isTouchDevice)controls.style.display = "flex";
+
         startDraw = setInterval(draw,30);
     }else{
         btnStart.textContent = "Start the game";
@@ -61,6 +67,7 @@ function startGame(){
         firstScreen();
         scoreLeft = scoreRight = 0;
         score(scoreLeft, scoreRight);
+        if (isTouchDevice)controls.style.display = "none";
     }
 }
 
@@ -148,7 +155,19 @@ function racketRightMovement(keyUp, keyDown){
         if(event.code == keyDown && yRacketRight < (tableHight-racketHight)) {
             yRacketRight += 1/100;
         }
-      }, false);
+    }, false);
+
+
+    controlsRight.querySelector("#up").addEventListener('touchstart', () => {
+        if(yRacketRight > 0) {
+            yRacketRight -= 1/100;
+        }
+    }, false);
+    controlsRight.querySelector("#down").addEventListener('touchstart', () => {
+        if(yRacketRight < (tableHight-racketHight)) {
+            yRacketRight += 1/100;
+        }
+    }, false);
 }
 
 function racketLeftMovement(keyUp, keyDown){
@@ -160,10 +179,28 @@ function racketLeftMovement(keyUp, keyDown){
             yRacketLeft += 1/100;
         }
       }, false);
+
+      controlsLeft.querySelector("#up").addEventListener('touchstart', () => {
+        if(yRacketLeft > 0) {
+            yRacketLeft -= 1/100;
+        }
+      }, false);
+      controlsLeft.querySelector("#down").addEventListener('touchstart', () => {
+        if(yRacketLeft < (tableHight-racketHight)) {
+            yRacketLeft += 1/100;
+        }
+      }, false);
 }
 
 //Score
 function score(left, right){
     scoreLeftPlayer.textContent = left;
     scoreRightPlayer.textContent = right;
+}
+
+//Touch devices
+function isTouchDevice() {
+    return (('ontouchstart' in window) ||
+    (navigator.maxTouchPoints > 0) ||
+    (navigator.msMaxTouchPoints > 0));
 }
