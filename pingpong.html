@@ -35,7 +35,7 @@
         </div> 
     
         <!-- Menu mobile -->
-        <div id="social-div-mobile" class="flex-center menu-mobile">
+        <div id="social-div-mobile" class="flex-center menu-mobile" onclick="mobileMenu()">
           <div id="divMobile">
             <ul>
               <li class="menuBtn"><a href="index.html"><img src ="src/svg/Home.svg" alt="Home"/><p>Home</p></a></li>
@@ -52,6 +52,11 @@
 
       <!-- Game -->
       <main>
+        <div id="score">
+          <p>Left Player</p>
+          <div class="score"><p><span id="leftPlayer">0</span>:<span id="rightPlayer">0</span></p> </div>
+          <p>Right Player</p>
+        </div>
         <div id="gameDiv">
           <canvas></canvas>
         </div>

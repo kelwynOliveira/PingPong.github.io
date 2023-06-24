@@ -83,10 +83,18 @@ div.container {
     margin-bottom: 18px;
 }
 
-
-
-#gameDiv canvas{
-    position: relative;
+#score {
+    margin: 8px;
+}
+#score p{
+    padding: 4px;
+    font-size: 18px;
+    display: inline-block;
+}
+#score div{
+    display: inline-block;
+    background-color: #30363D;
+    padding: 4px;
 }
 
 
