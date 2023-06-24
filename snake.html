@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang=pt-BR>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width"/>
+    <title>Snake</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="style.css">
+  </head>
+
+  <body class="flex-center">
+    
+<!-- Top Navigation Menu -->
+    <div class="container"> <!-- start container for header and main -->
+      <header class="design">
+        <a href="javascript:void(0);" id="hamburguer_menu" onclick="mobileMenu()">
+          <img src ="src/svg/menu.svg" alt="Menu"/>
+        </a>
+
+        <h1 id="title"><a href="index.html">Snake</a></h1>
+        
+        <!-- Menu PC -->
+        <div id="social-div-pc" class="flex-center">
+          
+          <ul>
+            <li class="menuBtn"><a href="index.html"><img src ="src/svg/Home.svg" alt="Home"/><p>Home</p></a></li>
+            <li class="menuBtn"><a target="_blank" href="https://github.com/kelwynOliveira"><img src="src/svg/GitHub.svg" alt="My github"/><p>Github</p></a></li>
+            <li class="menuBtn"><a target="_blank" href="#"><img src="src/svg/Instagram.svg" alt="My Instagram"/><p>Instagram</p></a></li>
+            <li class="menuBtn"><a target="_blank" href="#"><img src="src/svg/Blog.svg" alt="My blog"/><p>Blog</p></a></li>
+            <li class="menuBtn"><a target="_blank" href="#"><img src="src/svg/About.svg" alt="About me"/><p>About me</p></a></li>
+          </ul>
+        </div> 
+    
+        <!-- Menu mobile -->
+        <div id="social-div-mobile" class="flex-center menu-mobile" onclick="mobileMenu()">
+          <div id="divMobile">
+            <ul>
+              <li class="menuBtn"><a href="index.html"><img src ="src/svg/Home.svg" alt="Home"/><p>Home</p></a></li>
+              <li class="menuBtn"><a target="_blank" href="https://github.com/kelwynOliveira"><img src="src/svg/GitHub.svg" alt="My github"/><p>Github</p></a></li>
+              <li class="menuBtn"><a target="_blank" href="#"><img src="src/svg/Instagram.svg" alt="My Instagram"/><p>Instagram</p></a></li>
+              <li class="menuBtn"><a target="_blank" href="#"><img src="src/svg/Blog.svg" alt="My blog"/><p>Blog</p></a></li>
+              <li class="menuBtn"><a target="_blank" href="#"><img src="src/svg/About.svg" alt="About me"/><p>About me</p></a></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+
+      <main>
+
+      <!-- Game -->
+      <main>
+        <div id="score">
+          <p>Score: <span>0</span></p>
+        </div>
+        
+        <div id="gameDiv">
+          <canvas></canvas>
+        </div>
+
+        <div id="controls">
+          <div id="control" class="control">
+            <div id="up"><img src="src/svg/arrow_upward.svg" alt="arrow up"/></div>
+            <div>
+                <div id="left"><img src="src/svg/arrow_upward.svg" alt="arrow left"/></div>
+                <div id="down"><img src="src/svg/arrow_upward.svg" alt="arrow down"/></div>
+                <div id="right"><img src="src/svg/arrow_upward.svg" alt="arrow right"/></div></div>
+          </div>
+        </div>
+      
+        <div id="infos" >
+      
+            <div id="startBTN" class="flex-center">
+                <button class="btn">Start the game</button>
+            </div>
+
+            <button type="button" id="instruction-btn" class="btn" onclick="showHide('#instruction')">Instructions</button>
+            <div id="instruction" class="box-info">
+                <p>Redirect the snake to eat the snacks</p>
+                <p><span>Controls</span></p>
+                <u>
+                    <li>Up: arrow Up</li>
+                    <li>Left: arrow Left</li>
+                    <li>Down: arrow Down</li>
+                    <li>Right: arrow Right</li>
+                </u>
+            </div>
+            <button type="button" id="information-btn" class="btn" onclick="showHide('#information')">Information</button>
+            <div id="information" class="box-info links">
+                <p>Current version: 0.0.0</p>
+                <p>Snake is an open source project written by <a href="https://github.com/kelwynOliveira" target="_blank">Kelwyn Oliveira</span></a>. Source code in <a target="_blank" href="https://github.com/kelwynOliveira/games.github.io">here</span></a>.</p>
+            </div>
+      
+        </div>
+      </main>
+
+    </div> 
+
+<script src="functions.js"></script>
+<script src="src/games/snake.js"></script>
+</body>
+</html>
+
