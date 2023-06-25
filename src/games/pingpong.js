@@ -56,7 +56,6 @@ let startDraw = null;
 function startGame(){
     if (btnStart.textContent === "Start the game"){
         btnStart.textContent = "Stop the game";
-        // if(isTouchDevice)controls.style.display = "flex";
         
         controls.style.display = isTouchDevice() ? "flex" : "none";
 
@@ -68,7 +67,7 @@ function startGame(){
         firstScreen();
         scoreLeft = scoreRight = 0;
         score(scoreLeft, scoreRight);
-        if (isTouchDevice)controls.style.display = "none";
+        controls.style.display = isTouchDevice() ? "none" : "flex";
     }
 }
 
