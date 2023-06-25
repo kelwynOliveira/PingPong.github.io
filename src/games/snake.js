@@ -3,7 +3,6 @@ const ctx = canvasPlace.getContext("2d");
 const controls = document.querySelector("#controls");
 
 
-
 const btnStart = document.querySelector("#startBTN").querySelector("button");
 btnStart.addEventListener("click", startGame);
 let startDraw = null;
