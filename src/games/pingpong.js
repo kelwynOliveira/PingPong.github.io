@@ -24,9 +24,8 @@ let ballBottom = yBall + radiusBall;
 //Racket
 let racketWidth = 2;
 let racketHight = 30;
-let yRacketLeft = (tableHight-racketHight)/2;
+let yRacketLeft = yRacketRight = (tableHight-racketHight)/2;
 let xRacketLeft = 5;
-let yRacketRight = (tableHight-racketHight)/2;
 let xRacketRight = tableWidth - xRacketLeft - racketWidth;
 
 //Racket moviments
@@ -34,12 +33,12 @@ let racketLeftUp = 'KeyW';
 let racketLeftDown = 'KeyS';
 let racketRightUp = 'ArrowUp';
 let racketRightDown = 'ArrowDown';
+let yRacketLeftvelocity = yRacketRightvelocity = 0;
 
 //General
 let colorFill = "#fff";
 let colisionPoint = racketWidth+xRacketLeft;
-let scoreLeft = 0;
-let scoreRight = 0;
+let scoreLeft = scoreRight = 0;
 let touchup = false;
 
 function firstScreen(){
@@ -57,7 +56,9 @@ let startDraw = null;
 function startGame(){
     if (btnStart.textContent === "Start the game"){
         btnStart.textContent = "Stop the game";
-        if(isTouchDevice)controls.style.display = "flex";
+        // if(isTouchDevice)controls.style.display = "flex";
+        
+        controls.style.display = isTouchDevice() ? "flex" : "none";
 
         startDraw = setInterval(draw,30);
     }else{
@@ -71,13 +72,19 @@ function startGame(){
     }
 }
 
-function draw(){
+function draw(){     
+    yRacketLeft += yRacketLeftvelocity;
+    yRacketLeft = yRacketLeft < 0 ? 0 : yRacketLeft;
+    yRacketLeft = yRacketLeft > (tableHight-racketHight) ? yRacketLeft = tableHight-racketHight:yRacketLeft;
+    
+    yRacketRight += yRacketRightvelocity;
+    yRacketRight = yRacketRight < 0 ? yRacketRight = 0 : yRacketRight;
+    yRacketRight = yRacketRight > (tableHight-racketHight) ? tableHight-racketHight : yRacketRight;
+
     clearDraw();
     circle(xBall, yBall, radiusBall, colorFill);
     rect(xRacketLeft, yRacketLeft, racketWidth, racketHight, colorFill);
     rect(xRacketRight, yRacketRight, racketWidth, racketHight, colorFill);
-    racketLeftMovement(racketLeftUp, racketLeftDown);
-    racketRightMovement(racketRightUp, racketRightDown);
     racketColision();
     ballMoviment();
 }
@@ -113,9 +120,8 @@ function ballMoviment(){
         scoreRight++;
         xVelocity *= -1;
     }
-    if (yBall+radiusBall > tableHight || yBall-radiusBall < 0){
-        yVelocity *= -1;
-    }
+
+    yVelocity = yBall+radiusBall > tableHight || yBall-radiusBall < 0 ? yVelocity *= -1 : yVelocity;
     score(scoreLeft, scoreRight);
 }
 
@@ -147,50 +153,27 @@ window.addEventListener("keydown", function(e) {
     }
 }, false);
 
-function racketRightMovement(keyUp, keyDown){
-    document.addEventListener('keydown', (event) => {
-        if(event.code == keyUp && yRacketRight > 0) {
-            yRacketRight -= 1/100;
-        }
-        if(event.code == keyDown && yRacketRight < (tableHight-racketHight)) {
-            yRacketRight += 1/100;
-        }
-    }, false);
+//Control with keys
+document.addEventListener('keydown', (event) => {
+    yRacketLeftvelocity = event.code == racketLeftUp ? -5 : event.code == racketLeftDown ? 5 : yRacketLeftvelocity;
+    yRacketRightvelocity = event.code == racketRightUp ? -5 : event.code == racketRightDown ? 5 : yRacketRightvelocity;
+}, false);
 
+document.addEventListener('keyup', (event) => {
+    yRacketLeftvelocity = event.code == racketLeftUp || event.code == racketLeftDown ? 0 : yRacketLeftvelocity;
+    yRacketRightvelocity = event.code == racketRightUp || event.code == racketRightDown ? 0 : yRacketRightvelocity;
+}, false);
 
-    controlsRight.querySelector("#up").addEventListener('click', () => {
-        if(yRacketRight > 0) {
-            yRacketRight -= 1/100;
-        }
-    }, false);
-    controlsRight.querySelector("#down").addEventListener('click', () => {
-        if(yRacketRight < (tableHight-racketHight)) {
-            yRacketRight += 1/100;
-        }
-    }, false);
-}
+//Control with buttons touch
+controlsLeft.querySelector(".up").addEventListener('touchstart', () => {yRacketLeftvelocity = -5;}, false);
+controlsLeft.querySelector(".down").addEventListener('touchstart', () => {yRacketLeftvelocity = 5;}, false);
+controlsRight.querySelector(".up").addEventListener('touchstart', () => {yRacketRightvelocity = -5;}, false);
+controlsRight.querySelector(".down").addEventListener('touchstart', () => {yRacketRightvelocity = 5;}, false);
 
-function racketLeftMovement(keyUp, keyDown){
-    document.addEventListener('keydown', (event) => {
-        if(event.code == keyUp && yRacketLeft > 0) {
-            yRacketLeft -= 1/100;
-        }
-        if(event.code == keyDown && yRacketLeft < (tableHight-racketHight)) {
-            yRacketLeft += 1/100;
-        }
-      }, false);
-
-      controlsLeft.querySelector("#up").addEventListener('click', () => {
-        if(yRacketLeft > 0) {
-            yRacketLeft -= 1/100;
-        }
-      }, false);
-      controlsLeft.querySelector("#down").addEventListener('click', () => {
-        if(yRacketLeft < (tableHight-racketHight)) {
-            yRacketLeft += 1/100;
-        }
-      }, false);
-}
+controlsLeft.querySelector(".up").addEventListener('touchend', () => {yRacketLeftvelocity = 0;}, false);
+controlsLeft.querySelector(".down").addEventListener('touchend', () => {yRacketLeftvelocity = 0;}, false);
+controlsRight.querySelector(".up").addEventListener('touchend', () => {yRacketRightvelocity = 0;}, false);
+controlsRight.querySelector(".down").addEventListener('touchend', () => {yRacketRightvelocity = 0;}, false);
 
 //Score
 function score(left, right){
