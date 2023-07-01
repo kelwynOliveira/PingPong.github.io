@@ -1,7 +1,3 @@
-let btnPTpc = document.querySelector('#translatorPTpc');
-let btnENpc = document.querySelector('#translatorENpc');
-let btnPTmob = document.querySelector('#translatorPTmob');
-let btnENmob = document.querySelector('#translatorENmob');
 socialDiv = document.querySelector('#social-div-mobile');
 
 function showHide(el){

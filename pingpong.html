@@ -1,54 +1,75 @@
 <!DOCTYPE html>
 <html lang=pt-BR>
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width"/>
-    <title>Ping-Pong</title>
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="style.css">
-  </head>
 
-  <body class="flex-center">
-    
-<!-- Top Navigation Menu -->
-    <div class="container"> <!-- start container for header and main -->
-      <header class="design">
-        <a href="javascript:void(0);" id="hamburguer_menu" onclick="mobileMenu()">
-          <img src ="src/svg/menu.svg" alt="Menu"/>
-        </a>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width" />
+  <title>Ping-Pong</title>
 
-        <h1 id="title"><a href="index.html">Ping-Pong</a></h1>
-        
-        <!-- Menu PC -->
-        <div id="social-div-pc" class="flex-center">
-          
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body class="flex-center">
+
+  <!-- Top Navigation Menu -->
+  <div class="container"> <!-- start container for header and main -->
+    <header class="design">
+      <a href="javascript:void(0);" id="hamburguer_menu" onclick="mobileMenu()">
+        <img src="src/svg/menu.svg" alt="Menu" />
+      </a>
+
+      <h1 id="title"><a href="index.html">Ping-Pong</a></h1>
+
+      <!-- Menu PC -->
+      <div id="social-div-pc" class="flex-center">
+
+        <ul>
+          <li class="menuBtn"><a href="index.html"><img src="src/svg/Home.svg" alt="Home" />
+              <p>Home</p>
+            </a></li>
+          <li class="menuBtn"><a target="_blank" href="https://github.com/kelwynOliveira"><img src="src/svg/GitHub.svg" alt="My github" />
+              <p>Github</p>
+            </a></li>
+          <li class="menuBtn"><a target="_blank" href="#"><img src="src/svg/Instagram.svg" alt="My Instagram" />
+              <p>Instagram</p>
+            </a></li>
+          <li class="menuBtn"><a target="_blank" href="#"><img src="src/svg/Blog.svg" alt="My blog" />
+              <p>Blog</p>
+            </a></li>
+          <li class="menuBtn"><a target="_blank" href="#"><img src="src/svg/About.svg" alt="About me" />
+              <p>About me</p>
+            </a></li>
+        </ul>
+      </div>
+
+      <!-- Menu mobile -->
+      <div id="social-div-mobile" class="flex-center menu-mobile" onclick="mobileMenu()">
+        <div id="divMobile">
           <ul>
-            <li class="menuBtn"><a href="index.html"><img src ="src/svg/Home.svg" alt="Home"/><p>Home</p></a></li>
-            <li class="menuBtn"><a target="_blank" href="https://github.com/kelwynOliveira"><img src="src/svg/GitHub.svg" alt="My github"/><p>Github</p></a></li>
-            <li class="menuBtn"><a target="_blank" href="#"><img src="src/svg/Instagram.svg" alt="My Instagram"/><p>Instagram</p></a></li>
-            <li class="menuBtn"><a target="_blank" href="#"><img src="src/svg/Blog.svg" alt="My blog"/><p>Blog</p></a></li>
-            <li class="menuBtn"><a target="_blank" href="#"><img src="src/svg/About.svg" alt="About me"/><p>About me</p></a></li>
+            <li class="menuBtn"><a href="index.html"><img src="src/svg/Home.svg" alt="Home" />
+                <p>Home</p>
+              </a></li>
+            <li class="menuBtn"><a target="_blank" href="https://github.com/kelwynOliveira"><img src="src/svg/GitHub.svg" alt="My github" />
+                <p>Github</p>
+              </a></li>
+            <li class="menuBtn"><a target="_blank" href="#"><img src="src/svg/Instagram.svg" alt="My Instagram" />
+                <p>Instagram</p>
+              </a></li>
+            <li class="menuBtn"><a target="_blank" href="#"><img src="src/svg/Blog.svg" alt="My blog" />
+                <p>Blog</p>
+              </a></li>
+            <li class="menuBtn"><a target="_blank" href="#"><img src="src/svg/About.svg" alt="About me" />
+                <p>About me</p>
+              </a></li>
           </ul>
-        </div> 
-    
-        <!-- Menu mobile -->
-        <div id="social-div-mobile" class="flex-center menu-mobile" onclick="mobileMenu()">
-          <div id="divMobile">
-            <ul>
-              <li class="menuBtn"><a href="index.html"><img src ="src/svg/Home.svg" alt="Home"/><p>Home</p></a></li>
-              <li class="menuBtn"><a target="_blank" href="https://github.com/kelwynOliveira"><img src="src/svg/GitHub.svg" alt="My github"/><p>Github</p></a></li>
-              <li class="menuBtn"><a target="_blank" href="#"><img src="src/svg/Instagram.svg" alt="My Instagram"/><p>Instagram</p></a></li>
-              <li class="menuBtn"><a target="_blank" href="#"><img src="src/svg/Blog.svg" alt="My blog"/><p>Blog</p></a></li>
-              <li class="menuBtn"><a target="_blank" href="#"><img src="src/svg/About.svg" alt="About me"/><p>About me</p></a></li>
-            </ul>
-          </div>
         </div>
-      </header>
+      </div>
+    </header>
 
-      <main>
+    <main>
 
       <!-- Game -->
       <main>
@@ -58,6 +79,7 @@
             <p><span id="leftPlayer">0</span>:<span id="rightPlayer">0</span></p>
           </div>
           <p>Right Player</p>
+          <img id="sound" src="src/svg/volumeOn.svg" alt="sound">
         </div>
         <div id="gameDiv">
           <canvas></canvas>
@@ -70,47 +92,50 @@
               <div class="down prevent-select"></div>
             </div>
           </div>
-          
+
           <div id="controlsRight" class="control">
             <div class="up prevent-select"></div>
             <div>
-              <div class="down prevent-select" ></div>
+              <div class="down prevent-select"></div>
             </div>
           </div>
         </div>
-      
-        <div id="infos" >
-      
-            <div id="startBTN" class="flex-center">
-                <button class="btn">Start the game</button>
-            </div>
 
-            <button type="button" id="instruction-btn" class="btn" onclick="showHide('#instruction')">Instructions</button>
-            <div id="instruction" class="box-info">
-                <p><span>Player 1 (left)</span></p>
-                <ul>
-                    <li>Racket up: key W</li>
-                    <li>Racket down: key S</li>
-                </ul>
-                <p><span>Player 2 (direita)</span></p>
-                <ul>
-                    <li>Racket up: up arrow</li>
-                    <li>Racket down: down arrow</li>
-                </ul>
-            </div>
-            <button type="button" id="information-btn" class="btn" onclick="showHide('#information')">Information</button>
-            <div id="information" class="box-info links">
-                <p>Current version: 0.0.0</p>
-                <p>Ping-Pong is an open source project written by <a href="https://github.com/kelwynOliveira" target="_blank">Kelwyn Oliveira</span></a>. Source code in <a target="_blank" href="https://github.com/kelwynOliveira/games.github.io">here</span></a>.</p>
-            </div>
-      
+        <div id="infos">
+
+          <div id="startBTN" class="flex-center">
+            <button class="btn">Start the game</button>
+          </div>
+
+          <button type="button" id="instruction-btn" class="btn" onclick="showHide('#instruction')">Instructions</button>
+          <div id="instruction" class="box-info">
+            <p><span>Player 1 (left)</span></p>
+            <ul>
+              <li>Racket up: key W</li>
+              <li>Racket down: key S</li>
+            </ul>
+            <p><span>Player 2 (direita)</span></p>
+            <ul>
+              <li>Racket up: up arrow</li>
+              <li>Racket down: down arrow</li>
+            </ul>
+            <p><span>Touch screen</span></p>
+            <ul>
+              <li>Just press the buttons on the screen.</li>
+            </ul>
+          </div>
+          <button type="button" id="information-btn" class="btn" onclick="showHide('#information')">Information</button>
+          <div id="information" class="box-info links">
+            <p>Current version: 0.0.0</p>
+            <p>Ping-Pong is an open source project written by <a href="https://github.com/kelwynOliveira" target="_blank">Kelwyn Oliveira</span></a>. Source code in <a target="_blank" href="https://github.com/kelwynOliveira/games.github.io">here</span></a>.</p>
+          </div>
+
         </div>
       </main>
 
-    </div> 
-
-<script src="functions.js"></script>
-<script src="src/games/pingpong.js"></script>
+  </div>
+  <script src="functions.js"></script>
+  <script src="src/games/pingpong.js"></script>
 </body>
-</html>
 
+</html>
