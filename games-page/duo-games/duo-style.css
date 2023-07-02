@@ -1,0 +1,122 @@
+#score {
+  margin: 8px;
+  position: relative;
+}
+#score p {
+  padding: 4px;
+  display: inline-block;
+}
+#score div {
+  display: inline-block;
+  background-color: var(--tertiary);
+  padding: 4px;
+}
+
+#sound {
+  filter: var(--svg-color);
+  width: 30px;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
+
+#infos {
+  background-color: var(--secondary);
+  margin: 20px 0px;
+}
+.btn {
+  background-color: transparent;
+  border: none;
+  width: 100%;
+  height: 50px;
+  text-align: center;
+  display: block;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: var(--tertiary);
+}
+
+.box-info {
+  padding: 10px;
+  font-size: 0.875rem;
+  box-sizing: border-box;
+  width: 100%;
+  background-color: var(--primary);
+  border: 1px solid var(--tertiary);
+  display: none;
+}
+
+.box-info span {
+  background-color: var(--tertiary);
+  padding: 8px;
+}
+
+#gameDiv canvas {
+  background-color: black;
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid var(--contrast);
+}
+
+.prevent-select {
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  user-select: none; /* Standard syntax */
+}
+
+#controls {
+  display: none;
+  flex-direction: column;
+  margin: 20px;
+  justify-content: space-between;
+  align-items: center;
+}
+#controls.twoControls {
+  flex-direction: row;
+}
+
+#controlsLeft,
+#controlsRight {
+  display: inline-block;
+}
+
+.control .up,
+.control .down,
+.control .right,
+.control .left {
+  width: 4rem;
+  height: 4rem;
+  border: 1px solid var(--contrast);
+  border-radius: 50%;
+  filter: var(--btn-hover);
+  margin: 10px;
+  display: inline-block;
+  cursor: pointer;
+  background: url("../../src/svg/arrow_upward.svg") no-repeat center center;
+}
+
+#controls .down {
+  transform: rotate(180deg);
+}
+#controls .left {
+  transform: rotate(-90deg);
+}
+#controls .right {
+  transform: rotate(90deg);
+}
+
+.menuBtn:hover {
+  filter: var(--btn-hover);
+}
+
+@media only screen and (max-width: 800px) {
+  .btn {
+    font-size: 0.875rem;
+  }
+  #sound {
+    position: initial;
+  }
+}

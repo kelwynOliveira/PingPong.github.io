@@ -8,11 +8,11 @@ const controlsRight = controls.querySelector("#controlsRight");
 const sound = document.querySelector("#sound");
 
 //Audio
-let soundTheme = new Audio("./src/sounds/Mario_Bros_medley.mp3");
+let soundTheme = new Audio("../../src/sounds/Mario_Bros_medley.mp3");
 soundTheme.loop = true;
 soundTheme.volume = 0.2;
-let touchRacket = new Audio("./src/sounds/smb_fireball.wav");
-let point = new Audio("./src/sounds/smb_coin.wav");
+let touchRacket = new Audio("../../src/sounds/smb_fireball.wav");
+let point = new Audio("../../src/sounds/smb_coin.wav");
 
 //canvas dimmension
 let tableWidth = canvasPlace.width;
@@ -298,12 +298,12 @@ sound.addEventListener(
       soundTheme.volume = 0;
       touchRacket.volume = 0;
       point.volume = 0;
-      sound.src = "./src/svg/volumeOff.svg";
+      sound.src = "../../src/svg/volumeOff.svg";
     } else {
       soundTheme.volume = 0.2;
       touchRacket.volume = 1;
       point.volume = 1;
-      sound.src = "./src/svg/volumeOn.svg";
+      sound.src = "../../src/svg/volumeOn.svg";
     }
   },
   false
