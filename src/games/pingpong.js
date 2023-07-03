@@ -8,7 +8,7 @@ const controlsRight = controls.querySelector("#controlsRight");
 const sound = document.querySelector("#sound");
 
 //Audio
-let soundTheme = new Audio("../../src/sounds/Mario_Bros_medley.mp3");
+const soundTheme = new Audio("../../src/sounds/Mario_Bros_medley.mp3");
 soundTheme.loop = true;
 soundTheme.volume = 0.2;
 let touchRacket = new Audio("../../src/sounds/smb_fireball.wav");
@@ -22,8 +22,9 @@ let tableHight = canvasPlace.height;
 let xBall = tableWidth / 2;
 let yBall = tableHight / 2;
 let radiusBall = 4;
-let xVelocity = 3;
-let yVelocity = 2;
+let xVelocity = 4 * (Math.random() > 0.5 ? 1 : -1);
+let yVelocity = 3 * (Math.random() > 0.5 ? 1 : -1);
+let velocityIncrease = 0;
 let ballLeftside = xBall - radiusBall;
 let ballRightSide = xBall + radiusBall;
 let ballTopSide = yBall - radiusBall;
@@ -48,6 +49,8 @@ let colorFill = "#fff";
 let colisionPoint = racketWidth + xRacketLeft;
 let scoreLeft = (scoreRight = 0);
 let touchup = false;
+let defenses = 0;
+let winnerPoints = 10;
 
 function firstScreen() {
   xBall = tableWidth / 2;
@@ -66,6 +69,8 @@ function startGame() {
     btnStart.textContent = "Stop the game";
     controls.style.display = isTouchDevice() ? "flex" : "none";
     soundTheme.play();
+    scoreLeft = scoreRight = 0;
+    score(scoreLeft, scoreRight);
     startDraw = setInterval(draw, 30);
   } else {
     btnStart.textContent = "Start the game";
@@ -77,7 +82,34 @@ function startGame() {
     scoreLeft = scoreRight = 0;
     score(scoreLeft, scoreRight);
     controls.style.display = isTouchDevice() ? "none" : "flex";
+    xVelocity = 3 * (Math.random() > 0.5 ? 1 : -1);
+    yVelocity = 2 * (Math.random() > 0.5 ? 1 : -1);
   }
+}
+
+function endGame() {
+  if (
+    (scoreLeft >= winnerPoints || scoreRight >= winnerPoints) &&
+    btnStart.textContent === "Stop the game"
+  ) {
+    btnStart.textContent = "Start the game";
+    clearInterval(startDraw);
+    startDraw = null;
+    firstScreen();
+    soundTheme.pause();
+    soundTheme.currentTime = 0;
+    xVelocity = 3 * (Math.random() > 0.5 ? 1 : -1);
+    yVelocity = 2 * (Math.random() > 0.5 ? 1 : -1);
+  }
+  let xWinner =
+    tableWidth / 2 +
+    (scoreLeft >= winnerPoints ? -tableWidth / 4 : tableWidth / 4);
+  let xLoser =
+    tableWidth / 2 +
+    (scoreLeft >= winnerPoints ? tableWidth / 4 : -tableWidth / 4);
+  ctx.font = "10px Arial";
+  ctx.fillText("Winner", xWinner, tableHight / 2);
+  ctx.fillText("Loser", xLoser, tableHight / 2);
 }
 
 function draw() {
@@ -101,6 +133,7 @@ function draw() {
   rect(xRacketRight, yRacketRight, racketWidth, racketHight, colorFill);
   racketColision();
   ballMoviment();
+  winner();
 }
 
 function clearDraw() {
@@ -142,6 +175,12 @@ function ballMoviment() {
       ? (yVelocity *= -1)
       : yVelocity;
   score(scoreLeft, scoreRight);
+
+  let def = 10;
+  for (let veloIncrease = 0; veloIncrease < 5; veloIncrease++) {
+    increasevelocity(def, veloIncrease);
+    def += 10;
+  }
 }
 
 function racketColision() {
@@ -158,6 +197,7 @@ function racketColision() {
     xBall = colisionPoint + radiusBall;
     xVelocity *= -1;
     touchRacket.play();
+    defenses += 1;
   }
   if (
     ballRightSide + 1 >= xRacketRight &&
@@ -167,6 +207,16 @@ function racketColision() {
     xBall = tableWidth - colisionPoint - radiusBall;
     xVelocity *= -1;
     touchRacket.play();
+    defenses += 1;
+  }
+}
+
+//Velocity Increase
+function increasevelocity(def, veloIncr) {
+  if (defenses == def && velocityIncrease == veloIncr) {
+    xVelocity += xVelocity > 0 ? 1 : -1;
+    yVelocity += yVelocity > 0 ? 1 : -1;
+    velocityIncrease += 1;
   }
 }
 
@@ -308,3 +358,9 @@ sound.addEventListener(
   },
   false
 );
+
+function winner() {
+  if (scoreLeft >= winnerPoints || scoreRight >= winnerPoints) {
+    endGame();
+  }
+}
