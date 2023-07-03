@@ -8,11 +8,11 @@ const controlsRight = controls.querySelector("#controlsRight");
 const sound = document.querySelector("#sound");
 
 //Audio
-const soundTheme = new Audio("../../src/sounds/Mario_Bros_medley.mp3");
+const soundTheme = new Audio("../src/sounds/Mario_Bros_medley.mp3");
 soundTheme.loop = true;
 soundTheme.volume = 0.2;
-const touchRacket = new Audio("../../src/sounds/smb_fireball.wav");
-const point = new Audio("../../src/sounds/smb_coin.wav");
+const touchRacket = new Audio("../src/sounds/smb_fireball.wav");
+const point = new Audio("../src/sounds/smb_coin.wav");
 
 //canvas dimmension
 let tableWidth = canvasPlace.width;

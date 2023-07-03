@@ -95,7 +95,7 @@
   margin: 10px;
   display: inline-block;
   cursor: pointer;
-  background: url("../../src/svg/arrow_upward.svg") no-repeat center center;
+  background: url("./src/svg/arrow_upward.svg") no-repeat center center;
 }
 
 #controls .down {
