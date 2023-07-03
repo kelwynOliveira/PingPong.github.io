@@ -11,8 +11,8 @@ const sound = document.querySelector("#sound");
 const soundTheme = new Audio("../../src/sounds/Mario_Bros_medley.mp3");
 soundTheme.loop = true;
 soundTheme.volume = 0.2;
-let touchRacket = new Audio("../../src/sounds/smb_fireball.wav");
-let point = new Audio("../../src/sounds/smb_coin.wav");
+const touchRacket = new Audio("../../src/sounds/smb_fireball.wav");
+const point = new Audio("../../src/sounds/smb_coin.wav");
 
 //canvas dimmension
 let tableWidth = canvasPlace.width;
